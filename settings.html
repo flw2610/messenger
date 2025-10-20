@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Settings</title>
+  </head>
+  <body>
+    <h1>Profile Settings</h1>
+    <form action="settings.html" method="get">
+      <fieldset>
+        <legend>Base Data</legend>
+        <div>
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div>
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Your surname"
+          />
+        </div>
+
+        <div>
+          <label>Coffee or Tea?</label>
+          <select name="coffeeOrTea">
+            <option value="neither" selected>Neither nor</option>
+            <option value="coffee">Coffee</option>
+            <option value="tea">Tea</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tell Something About You</legend>
+        <textarea name="aboutYou" placeholder="Leave a comment here"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferred Chat Layout</legend>
+        <div>
+          <input
+            type="radio"
+            id="chatLayoutCombined"
+            name="chatLayout"
+            value="combined"
+          />
+          <label for="chatLayoutCombined"
+            >Username and message in one line</label
+          >
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="chatLayoutSeparate"
+            name="chatLayout"
+            value="separate"
+          />
+          <label for="chatLayoutSeparate"
+            >Username and message in separated lines</label
+          >
+        </div>
+      </fieldset>
+      <a href="friends.html"><button type="button">Cancel</button></a>
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

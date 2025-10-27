@@ -88,6 +88,11 @@ dt {
 
 /* Responsive (Aufgabe e)*/
 @media screen and (max-width: 900px) {
+
+  body {
+    max-width: 100%;
+  }
+  
   .mediaBreak {
     display: flex;
     flex-flow: column;

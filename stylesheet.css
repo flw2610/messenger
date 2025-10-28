@@ -86,6 +86,34 @@ dt {
 
 /* Links, Fromulare (Aufgabe c,d)*/
 
+/* Lets get it started */
+.nav:hover {
+  font-weight: bold;
+}
+.frame {
+  border: 2px dashed lightgray;
+  margin: 0 auto 15px auto;
+  padding: 20px;
+  width: 70%;
+  margin: center;
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+
 /* Responsive (Aufgabe e)*/
 @media screen and (max-width: 900px) {
 

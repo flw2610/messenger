@@ -20,7 +20,7 @@ img {
 
 .login_register {
   max-width: 900px;
-  background-color: white;
+  
 }
 
 .rmFriend {
@@ -73,6 +73,7 @@ dt {
   height: 30px;
   margin-left: 10px;
   margin-right: 20px;
+  border: 1px solid gray;
 }
 
 #friendlist li {
@@ -83,36 +84,73 @@ dt {
 
 #friendlist {
   background-color: white;
+  border-radius: 6px;
+  border: 1px solid lightgray;
+  padding-bottom: 10px;
 }
+
+#friendlist a{
+  color: black;
+    
+}
+
+#friendlist li{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+#friendlist span{
+  margin-right: 30px;
+  background-color: blue;
+  color: white;
+  width: 20px;
+  text-align: center;
+
+}
+
+.enterButton{
+  background-color:blue;
+}
+
+hr{
+  border:none;
+  border-top: 1px  dotted lightgray;
+}
+
 
 /* Links, Fromulare (Aufgabe c,d)*/
+a{
+  text-decoration: none;
+}
 
-/* Lets get it started */
-.nav:hover {
+a:hover {
   font-weight: bold;
+  text-decoration: underline;
 }
 .frame {
-  border: 2px dashed lightgray;
+  border: 1px dashed lightgray;
   margin: 0 auto 15px auto;
   padding: 20px;
   width: 70%;
   margin: center;
   text-align: center;
+  background-color: white;
 }
 
 label {
   display: inline-block;
-  width: 200px;
   text-align: right;
   margin-right: 10px;
 }
 
-input[type="text"] {
+body .inOut input {
   width: 200px;
   padding: 5px;
   margin: 10px;
   box-sizing: border-box;
 }
+
 
 
 /* Responsive (Aufgabe e)*/

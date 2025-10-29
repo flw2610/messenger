@@ -32,8 +32,10 @@ img {
 
 #profilpic {
   border-radius: 0%;
-  float: left;
-  height: 100%;
+  height: fit-content;
+  width: 40vw;
+ 
+  
 }
 
 button {
@@ -137,13 +139,36 @@ label {
   display: inline-block;
   text-align: right;
   margin-right: 10px;
+  width: 200px;
 }
 
-body .inOut input {
+
+.inOut input,.inOut select {
   width: 200px;
   padding: 5px;
   margin: 10px;
   box-sizing: border-box;
+}
+
+.frame textarea {
+  width: 100%;
+  height: 10vh;
+}
+.frame.radioButtons {
+  text-align: left;
+}
+
+
+.frame.radioButtons input {
+  margin-left: 10px;
+  width: fit-content;
+}
+
+.frame.radioButtons label {
+  text-align: left;
+  
+  width: fit-content;
+  
 }
 
 /* Responsive (Aufgabe e)*/
@@ -161,5 +186,11 @@ body .inOut input {
 
   .mediaBreak button {
     margin-top: 10px;
+  }
+
+  #profilpic {
+    width: fit-content;
+    height: 40vh;
+
   }
 }

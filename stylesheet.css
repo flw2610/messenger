@@ -20,7 +20,6 @@ img {
 
 .login_register {
   max-width: 900px;
-  
 }
 
 .rmFriend {
@@ -89,38 +88,34 @@ dt {
   padding-bottom: 10px;
 }
 
-#friendlist a{
+#friendlist a {
   color: black;
-    
 }
 
-#friendlist li{
+#friendlist li {
   display: flex;
   justify-content: space-between;
-  
 }
 
-#friendlist span{
+#friendlist span {
   margin-right: 30px;
   background-color: blue;
   color: white;
   width: 20px;
   text-align: center;
-
 }
 
-.enterButton{
-  background-color:blue;
+.enterButton {
+  background-color: blue;
 }
 
-hr{
-  border:none;
-  border-top: 1px  dotted lightgray;
+hr {
+  border: none;
+  border-top: 1px dotted lightgray;
 }
-
 
 /* Links, Fromulare (Aufgabe c,d)*/
-a{
+a {
   text-decoration: none;
 }
 
@@ -151,18 +146,20 @@ body .inOut input {
   box-sizing: border-box;
 }
 
-
-
 /* Responsive (Aufgabe e)*/
 @media screen and (max-width: 900px) {
-
-  body {
-    max-width: 100%;
+  .frame {
+    box-sizing: border-box;
+    width: 100%;
   }
-  
+
   .mediaBreak {
     display: flex;
     flex-flow: column;
     align-items: center;
+  }
+
+  .mediaBreak button {
+    margin-top: 10px;
   }
 }

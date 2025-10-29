@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
 
-<head>
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
-
-<body>
+  <body>
     <h1><b>Friends</b></h1>
-    <p><a class="nav" href="./logout.html">
-            < Logout</a> | <a class="nav" href="./settings.html">Settings</a></p>
-    <hr>
+    <p>
+      <a class="nav" href="./logout.html"> < Logout</a> |
+      <a class="nav" href="./settings.html">Settings</a>
+    </p>
+    <hr />
     <!--Friends-->
     <ul id="friendlist">
-        <li><a href="./chat.html">Tom</a>
-            <span>3</span>
-        </li>
-        <li><a href="./chat.html">Marvin</a>
-            <span>1</span>
-        </li>
-        <li><a href="./chat.html">Tick</a></li>
-        <li><a href="./chat.html">Trick</a></li>
-
+      <li>
+        <a href="./chat.html">Tom</a>
+        <span>3</span>
+      </li>
+      <li>
+        <a href="./chat.html">Marvin</a>
+        <span>1</span>
+      </li>
+      <li><a href="./chat.html">Tick</a></li>
+      <li><a href="./chat.html">Trick</a></li>
     </ul>
-    <hr>
+    <hr />
     <!--Friend Requests-->
     <h2><b>New Requests</b></h2>
     <ol>
-        <li>
-            <div>
-                Friend request form <b>Track</b> <button>Accept</button> <button>Reject</button>
-            </div>
-        </li>
-
+      <li>
+        <div class="mediaBreak">
+          Friend request from <b>Track</b>
+          <div><button>Accept</button> <button>Reject</button></div>
+        </div>
+      </li>
     </ol>
-    <hr>
+    <hr />
     <!--Adding new Friend-->
     <form>
-        <div class="mediaBreak">
-            <input class="friend-message-input" type="text" placeholder="Add Friend to List">
-            <button>Add</button>
-        </div>
-
+      <div class="mediaBreak">
+        <input
+          class="friend-message-input"
+          type="text"
+          placeholder="Add Friend to List"
+        />
+        <button>Add</button>
+      </div>
     </form>
-</body>
-
+  </body>
 </html>

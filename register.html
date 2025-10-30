@@ -4,26 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css" />
   </head>
-  <body>
-    <img src="images/user.png" alt="profile" width="10%" />
+
+  <body class="inOut">
+    <img src="images/user.png" alt="profile"  />
 
     <h1>Register yourself</h1>
 
     <form action="friends.html">
-      <fieldset>
+      <fieldset class="login_register frame">
         <legend>Register</legend>
-        <label for="usernmae">Username</label>
-        <input type="text" id="username" /><br />
-        <label for="pw1">Password</label>
-        <input type="text" id="pw1" /><br />
-        <label for="pw2">Confirm Password</label>
-        <input type="text" id="pw2" />
+        <div class="mediaBreak">
+          <label for="usernmae">Username</label>
+          <input type="text" id="username" placeholder="Username"/>
+        </div>
+        <div class="mediaBreak">
+          <label for="pw1">Password</label> <input type="text" id="pw1" placeholder="Password"/>
+        </div>
+        <div class="mediaBreak">
+          <label for="pw2">Confirm Password</label>
+          <input type="text" id="pw2" placeholder="Confirm Password"/>
+        </div>
       </fieldset>
-      <a href="login.html">
-        <button type="button">Cancel</button>
-      </a>
-      <button type="submit">Create Account</button>
+      <div class="mediaBreak">
+        <a href="login.html">
+          <button type="button">Cancel</button>
+        </a>
+        <button class="enterButton" type="submit">Create Account</button>
+      </div>
     </form>
   </body>
 </html>

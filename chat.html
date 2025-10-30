@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
+
 <body>
     <h1>Chat with Tom</h1>
-    <a href="friends.html">&lt; Back</a> | <a href="profile.html">Profile</a> | <a href="friends.html">Remove Friend</a>
-    <p>
-        Tom: Hallo, Welt! <br>
-        Jerry: Wie gehts?
-    </p>
-    <input type="text" placeholder="New Message"> <button>Send</button>
+    <a class="nav" href="friends.html">&lt; Back</a> | <a class="nav" href="profile.html">Profile</a> | <a
+        class="rmFriend" href="friends.html">Remove Friend</a>
+    <hr>
+    <div id="messages">
+        <p>
+            Tom: Hallo, Welt! <br><br>
+            Jerry: Wie gehts?
+        </p>
+    </div>
+    <hr>
+    <div class="mediaBreak">
+        <input class="friend-message-input" type="text" placeholder="New Message"> <button>Send</button>
+    </div>
 </body>
+
 </html>

@@ -2,6 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="stylesheet.css" />
+    <script src="main.js"></script>
+    <script src="friendlist.js" defer></script>
   </head>
 
   <body>
@@ -43,7 +45,12 @@
           class="friend-message-input"
           type="text"
           placeholder="Add Friend to List"
+          name="friendRequestName"
+          id="friend-request-name"
+          list="friend-selector"
+          autocomplete="off"
         />
+        <datalist id="friend-selector"> </datalist>
         <button>Add</button>
       </div>
     </form>

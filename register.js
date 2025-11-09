@@ -1,0 +1,61 @@
+// Teilaufgabe a)
+
+// functions
+
+function validateUsername() {
+    let name = document.getElementById("username").value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 204) {
+                console.log("Exists");
+                return 0;
+            } else if (xmlhttp.status == 404) {
+                console.log("Does not exist");
+                
+                return 1;
+            }
+        }
+    };
+    xmlhttp.open("GET", backendUrl + "/user/" + name, true);
+    xmlhttp.send();
+}
+
+// Validate username length
+document.getElementById('username').addEventListener('input', function () {
+    if (this.value.length < 3) {
+        console.log('Username must be at least 3 characters long.');
+        this.style.borderColor = 'red';
+    } else {
+        if(validateUsername() == 1){
+            console.log('Username is valid.');
+            this.style.borderColor = 'green';
+        }
+    }
+
+});
+
+// Validate password strength
+document.getElementById('pw1').addEventListener('input', function () {
+    if (this.value.length < 8) {
+        console.log('Password must be at least 8 characters long.');
+        this.style.borderColor = 'red';
+    } else {
+        console.log('Password is strong enough.');
+        this.style.borderColor = 'green';
+    }
+
+});
+
+// Confirm password match
+document.getElementById('pw2').addEventListener('input', function () {
+    const pw1 = document.getElementById('pw1').value;
+    if (this.value !== pw1) {
+        console.log('Passwords do not match.');
+        this.style.borderColor = 'red';
+    } else {
+        console.log('Passwords match.');
+        this.style.borderColor = 'green';
+    }
+
+});

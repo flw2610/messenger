@@ -1,4 +1,5 @@
 var users = [];
+var friends = [];
 
 window.setInterval(function () {
   loadFriends();
@@ -11,9 +12,9 @@ function loadFriends() {
   let xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      let friends = JSON.parse(xmlhttp.responseText);
+      friends = JSON.parse(xmlhttp.responseText);
       //console.log(friends);
-      updateSelector(friends);
+      updateSelector();
     }
   };
   xmlhttp.open("GET", backendUrl + "/friend", true);
@@ -35,14 +36,14 @@ function loadUsers() {
   xmlhttp.send();
 }
 
-function updateSelector(friends) {
+function updateSelector() {
   const datalist = document.getElementById("friend-selector");
   // Making a copy of the options to safely iterate over
   const options = Array.from(datalist.getElementsByClassName("selectorOption"));
 
   users.forEach((user) => {
     // First we ignore our own user
-    if (user != window.user) {
+    if (user != currentUser) {
       // Search if the user is found in the list of friends
       if (friends.some((friend) => friend.username == user)) {
         // If the user is already a friend, we check if it needs to be removed from the options
@@ -61,4 +62,41 @@ function updateSelector(friends) {
       }
     }
   });
+}
+
+function addFriend() {
+  const requestField = document.getElementById("friend-request-name");
+  const requestName = requestField.value;
+  let validUser = false;
+  // Check if name is a real user and not our own user
+  if (users.includes(requestName) && requestName != currentUser) {
+    // Check if name is not already a friend
+    if (!friends.some((friend) => friend.username == requestName)) {
+      validUser = true;
+    } else {
+      alert(`${requestName} is already a friend!`);
+    }
+  } else {
+    alert("User not found");
+  }
+
+  if (validUser) {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
+        console.log("Requested...");
+        alert("Friend request sent!");
+      }
+    };
+    xmlhttp.open("POST", backendUrl + "/friend", true);
+    xmlhttp.setRequestHeader("Content-type", "application/json");
+    xmlhttp.setRequestHeader("Authorization", "Bearer " + token);
+    let data = {
+      username: requestName,
+    };
+    let jsonString = JSON.stringify(data);
+    xmlhttp.send(jsonString);
+  }
+
+  requestField.value = "";
 }

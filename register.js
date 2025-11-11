@@ -4,21 +4,32 @@
 
 function validateUsername() {
     let name = document.getElementById("username").value;
+    let res = false;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 204) {
                 console.log("Exists");
-                return 0;
+                changeBorderColorUsername(true);
             } else if (xmlhttp.status == 404) {
                 console.log("Does not exist");
-                
-                return 1;
+                changeBorderColorUsername(false);
             }
         }
     };
     xmlhttp.open("GET", backendUrl + "/user/" + name, true);
     xmlhttp.send();
+    return res;
+}
+
+// change the user input field border color 
+function changeBorderColorUsername(nameTaken) {
+    let inputField = document.getElementById('username');
+    if (nameTaken) {
+        inputField.style.borderColor = 'red';
+    } else {
+        inputField.style.borderColor = 'green';
+    }
 }
 
 // Validate username length
@@ -27,10 +38,8 @@ document.getElementById('username').addEventListener('input', function () {
         console.log('Username must be at least 3 characters long.');
         this.style.borderColor = 'red';
     } else {
-        if(validateUsername() == 1){
-            console.log('Username is valid.');
-            this.style.borderColor = 'green';
-        }
+        validateUsername();
+        
     }
 
 });
@@ -59,3 +68,5 @@ document.getElementById('pw2').addEventListener('input', function () {
     }
 
 });
+
+document.getElementById('registerButton').disabled = true;

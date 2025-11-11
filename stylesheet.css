@@ -68,8 +68,12 @@ dt {
   border: 2px solid lightgray;
 }
 
+.inline-input-button {
+  display: flex;
+}
+
 .friend-message-input {
-  width: 80%;
+  flex: 1 1 auto;
   height: 30px;
   margin-left: 10px;
   margin-right: 20px;
@@ -181,8 +185,13 @@ label {
     align-items: center;
   }
 
+  .mediaBreak.inline-input-button {
+    align-items: stretch;
+  }
+
   .mediaBreak button {
     margin-top: 10px;
+    align-self: center;
   }
 
   #profilpic {

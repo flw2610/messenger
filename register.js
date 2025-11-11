@@ -1,5 +1,11 @@
 // Teilaufgabe a)
 
+// variables
+var usernameOk = false;
+var passwordOk = false;
+var passwordsMatch = false;
+
+
 // functions
 
 function validateUsername() {
@@ -27,8 +33,18 @@ function changeBorderColorUsername(nameTaken) {
     let inputField = document.getElementById('username');
     if (nameTaken) {
         inputField.style.borderColor = 'red';
+        usernameOk = false;
     } else {
         inputField.style.borderColor = 'green';
+        usernameOk = true;
+    }
+}
+
+function canRegister() {
+    if (usernameOk && passwordOk && passwordsMatch) {
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -37,9 +53,10 @@ document.getElementById('username').addEventListener('input', function () {
     if (this.value.length < 3) {
         console.log('Username must be at least 3 characters long.');
         this.style.borderColor = 'red';
+        passwordOk = false;
     } else {
         validateUsername();
-        
+
     }
 
 });
@@ -49,9 +66,11 @@ document.getElementById('pw1').addEventListener('input', function () {
     if (this.value.length < 8) {
         console.log('Password must be at least 8 characters long.');
         this.style.borderColor = 'red';
+        passwordOk = false;
     } else {
         console.log('Password is strong enough.');
         this.style.borderColor = 'green';
+        passwordOk = true;
     }
 
 });
@@ -62,11 +81,17 @@ document.getElementById('pw2').addEventListener('input', function () {
     if (this.value !== pw1) {
         console.log('Passwords do not match.');
         this.style.borderColor = 'red';
+        passwordsMatch = false;
     } else {
-        console.log('Passwords match.');
-        this.style.borderColor = 'green';
+        if (this.value.length > 1) {
+            console.log('Passwords match.');
+            this.style.borderColor = 'green';
+            passwordsMatch = true;
+        } else {
+            console.log('Passwords do not match.');
+        }
     }
 
 });
 
-document.getElementById('registerButton').disabled = true;
+

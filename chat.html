@@ -5,28 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="stylesheet.css" />
+    <script src="main.js"></script>
+    <script src="chat.js" defer></script>
   </head>
 
   <body>
-    <h1>Chat with Tom</h1>
+    <h1 id="chat-header">Chat with Tom</h1>
     <a class="nav" href="friends.html">&lt; Back</a> |
     <a class="nav" href="profile.html">Profile</a> |
     <a class="rmFriend" href="friends.html">Remove Friend</a>
     <hr />
     <div id="messages">
-      <p>
-        Tom: Hallo, Welt! <br /><br />
-        Jerry: Wie gehts?
-      </p>
     </div>
     <hr />
     <div class="inline-input-button mediaBreak">
       <input
+        id="message-input"
         class="friend-message-input"
         type="text"
         placeholder="New Message"
       />
-      <button>Send</button>
+      <button id="send-message-button" type="button" onclick="onSendMessageButtonClicked()">Send</button>
     </div>
   </body>
 </html>

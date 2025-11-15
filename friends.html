@@ -2,6 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="stylesheet.css" />
+    <script src="main.js"></script>
+    <script src="friendlist.js" defer></script>
   </head>
 
   <body>
@@ -12,39 +14,26 @@
     </p>
     <hr />
     <!--Friends-->
-    <ul id="friendlist">
-      <li>
-        <a href="./chat.html">Tom</a>
-        <span>3</span>
-      </li>
-      <li>
-        <a href="./chat.html">Marvin</a>
-        <span>1</span>
-      </li>
-      <li><a href="./chat.html">Tick</a></li>
-      <li><a href="./chat.html">Trick</a></li>
-    </ul>
+    <ul id="friendlist"></ul>
     <hr />
     <!--Friend Requests-->
     <h2><b>New Requests</b></h2>
-    <ol>
-      <li>
-        <div class="mediaBreak">
-          Friend request from <b>Track</b>
-          <div><button>Accept</button> <button>Reject</button></div>
-        </div>
-      </li>
-    </ol>
+    <ol id="requestList"></ol>
     <hr />
     <!--Adding new Friend-->
     <form>
-      <div class="mediaBreak">
+      <div class="inline-input-button mediaBreak">
         <input
           class="friend-message-input"
           type="text"
           placeholder="Add Friend to List"
+          name="friendRequestName"
+          id="friend-request-name"
+          list="friend-selector"
+          autocomplete="off"
         />
-        <button>Add</button>
+        <datalist id="friend-selector"> </datalist>
+        <button type="button" onclick="addFriend()">Add</button>
       </div>
     </form>
   </body>

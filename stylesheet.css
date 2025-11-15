@@ -34,8 +34,6 @@ img {
   border-radius: 0%;
   height: fit-content;
   width: 40vw;
- 
-  
 }
 
 button {
@@ -43,6 +41,7 @@ button {
   color: white;
   height: 30px;
   width: 130px;
+  margin-inline: 10px;
 }
 
 .profile-content {
@@ -69,8 +68,12 @@ dt {
   border: 2px solid lightgray;
 }
 
+.inline-input-button {
+  display: flex;
+}
+
 .friend-message-input {
-  width: 80%;
+  flex: 1 1 auto;
   height: 30px;
   margin-left: 10px;
   margin-right: 20px;
@@ -142,8 +145,8 @@ label {
   width: 200px;
 }
 
-
-.inOut input,.inOut select {
+.inOut input,
+.inOut select {
   width: 200px;
   padding: 5px;
   margin: 10px;
@@ -158,7 +161,6 @@ label {
   text-align: left;
 }
 
-
 .frame.radioButtons input {
   margin-left: 10px;
   width: fit-content;
@@ -166,9 +168,8 @@ label {
 
 .frame.radioButtons label {
   text-align: left;
-  
+
   width: fit-content;
-  
 }
 
 /* Responsive (Aufgabe e)*/
@@ -184,13 +185,17 @@ label {
     align-items: center;
   }
 
+  .mediaBreak.inline-input-button {
+    align-items: stretch;
+  }
+
   .mediaBreak button {
     margin-top: 10px;
+    align-self: center;
   }
 
   #profilpic {
     width: fit-content;
     height: 40vh;
-
   }
 }

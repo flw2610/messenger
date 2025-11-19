@@ -132,6 +132,18 @@ function updateFriends() {
         ) {
           friendlist.appendChild(createFriendEntry(user));
         }
+        const friendEntry = friendEntries.find(
+          (entry) => entry.getElementsByTagName("a")[0].innerText == user
+        );
+        if (friendEntry) {
+          const span = friendEntry.getElementsByTagName("span")[0];
+          span.innerText = friend.unread;
+          if (friend.unread > 0) {
+            span.style.visibility = "visible";
+          } else {
+            span.style.visibility = "hidden";
+          }
+        }
       } else {
         // If the user is not a friend (anymore), we check if it needs to be removed from the list
         const friendEntry = friendEntries.find(

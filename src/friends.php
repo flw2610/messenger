@@ -9,8 +9,8 @@
   <body>
     <h1><b>Friends</b></h1>
     <p>
-      <a class="nav" href="./logout.html">Logout</a> |
-      <a class="nav" href="./settings.html">Settings</a>
+      <a class="nav" href="./logout.php">Logout</a> |
+      <a class="nav" href="./settings.php">Settings</a>
     </p>
     <hr />
     <!--Friends-->

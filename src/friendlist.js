@@ -178,7 +178,7 @@ function createFriendEntry(name) {
   entry.className = "friendEntry";
 
   const anchor = document.createElement("a");
-  anchor.setAttribute("href", "chat.html?friend=" + name);
+  anchor.setAttribute("href", "chat.php?friend=" + name);
   anchor.innerText = name;
 
   const span = document.createElement("span");

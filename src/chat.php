@@ -11,12 +11,11 @@
 
   <body>
     <h1 id="chat-header">Chat with Tom</h1>
-    <a class="nav" href="friends.html">&lt; Back</a> |
-    <a class="nav" href="profile.html">Profile</a> |
-    <a class="rmFriend" href="friends.html">Remove Friend</a>
+    <a class="nav" href="friends.php">&lt; Back</a> |
+    <a class="nav" href="profile.php">Profile</a> |
+    <a class="rmFriend" href="friends.php">Remove Friend</a>
     <hr />
-    <div id="messages">
-    </div>
+    <div id="messages"></div>
     <hr />
     <div class="inline-input-button mediaBreak">
       <input
@@ -25,7 +24,13 @@
         type="text"
         placeholder="New Message"
       />
-      <button id="send-message-button" type="button" onclick="onSendMessageButtonClicked()">Send</button>
+      <button
+        id="send-message-button"
+        type="button"
+        onclick="onSendMessageButtonClicked()"
+      >
+        Send
+      </button>
     </div>
   </body>
 </html>

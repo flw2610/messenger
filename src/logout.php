@@ -9,6 +9,6 @@
     <img src="images/logout.png" alt="Logging-Out-Logo" />
     <h1><b>Logged out...</b></h1>
     <p>See u!</p>
-    <a class="nav" href="./login.html">Login again</a>
+    <a class="nav" href="./login.php">Login again</a>
   </body>
 </html>

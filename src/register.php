@@ -10,31 +10,33 @@
   </head>
 
   <body class="inOut">
-    <img src="images/user.png" alt="profile"  />
+    <img src="images/user.png" alt="profile" />
 
     <h1>Register yourself</h1>
 
-    <form onsubmit="return canRegister()" action="friends.html">
+    <form onsubmit="return canRegister()" action="friends.php">
       <fieldset class="login_register frame">
         <legend>Register</legend>
         <div class="mediaBreak">
           <label for="usernmae">Username</label>
-          <input type="text" id="username" placeholder="Username"/>
+          <input type="text" id="username" placeholder="Username" />
         </div>
         <div class="mediaBreak">
-          <label for="pw1">Password</label> 
-          <input type="text" id="pw1" placeholder="Password"/>
+          <label for="pw1">Password</label>
+          <input type="text" id="pw1" placeholder="Password" />
         </div>
         <div class="mediaBreak">
           <label for="pw2">Confirm Password</label>
-          <input type="text" id="pw2" placeholder="Confirm Password"/>
+          <input type="text" id="pw2" placeholder="Confirm Password" />
         </div>
       </fieldset>
       <div class="mediaBreak">
-        <a href="login.html">
+        <a href="login.php">
           <button type="button">Cancel</button>
         </a>
-        <button id="registerButton" class="enterButton" type="submit">Create Account</button>
+        <button id="registerButton" class="enterButton" type="submit">
+          Create Account
+        </button>
       </div>
     </form>
   </body>

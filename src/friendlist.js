@@ -9,19 +9,15 @@ loadFriends();
 loadUsers();
 
 function loadFriends() {
-  let xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      friends = JSON.parse(xmlhttp.responseText);
-      //console.log(friends);
-      updateSelector();
-      updateFriends();
+  fetch("ajax_load_friends.php")
+    .then((res) => res.json())
+    .then((data) => {
+      friends = data;
     }
-  };
-  xmlhttp.open("GET", backendUrl + "/friend", true);
-  xmlhttp.setRequestHeader("Content-type", "application/json");
-  xmlhttp.setRequestHeader("Authorization", "Bearer " + token);
-  xmlhttp.send();
+    );
+  updateSelector();
+  updateFriends();
+
 }
 
 function loadUsers() {

@@ -1,3 +1,4 @@
 2025/12/03 15:21:45 [error] 29#29: *1 directory index of "/var/www/html/" is forbidden, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8181"
 2025/12/06 13:56:28 [error] 29#29: *1 directory index of "/var/www/html/" is forbidden, client: 192.168.65.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8181"
 2025/12/06 13:56:28 [error] 29#29: *1 open() "/var/www/html/favicon.ico" failed (2: No such file or directory), client: 192.168.65.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8181", referrer: "http://localhost:8181/"
+2025/12/06 18:05:02 [error] 22#22: *56 open() "/var/www/html/favicon.ico" failed (2: No such file or directory), client: 192.168.65.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8181", referrer: "http://localhost:8181/friends.php"

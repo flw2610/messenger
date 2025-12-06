@@ -9,23 +9,16 @@ var passwordsMatch = false;
 // functions
 
 function validateUsername() {
-    let name = document.getElementById("username").value;
-    let res = false;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
-            if (xmlhttp.status == 204) {
-                console.log("Exists");
-                changeBorderColorUsername(true);
-            } else if (xmlhttp.status == 404) {
-                console.log("Does not exist");
-                changeBorderColorUsername(false);
-            }
+    fetch("ajax_check_user.php?user=" + document.getElementById('username').value)
+    .then(res=>{
+        //benutzername ist frei
+        if (res.status === 404){
+            changeBorderColorUsername(false);
         }
-    };
-    xmlhttp.open("GET", backendUrl + "/user/" + name, true);
-    xmlhttp.send();
-    return res;
+        else{
+            changeBorderColorUsername(true);
+        }
+    })
 }
 
 // change the user input field border color 
@@ -56,13 +49,11 @@ document.getElementById('username').addEventListener('input', function () {
         passwordOk = false;
     } else {
         validateUsername();
-
     }
-
 });
 
 // Validate password strength
-document.getElementById('pw1').addEventListener('input', function () {
+document.getElementById('password').addEventListener('input', function () {
     if (this.value.length < 8) {
         console.log('Password must be at least 8 characters long.');
         this.style.borderColor = 'red';
@@ -76,8 +67,8 @@ document.getElementById('pw1').addEventListener('input', function () {
 });
 
 // Confirm password match
-document.getElementById('pw2').addEventListener('input', function () {
-    const pw1 = document.getElementById('pw1').value;
+document.getElementById('password_repetition').addEventListener('input', function () {
+    const pw1 = document.getElementById('password').value;
     if (this.value !== pw1) {
         console.log('Passwords do not match.');
         this.style.borderColor = 'red';

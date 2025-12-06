@@ -1,4 +1,9 @@
-<?php require("start.php"); ?>
+<?php require("start.php"); 
+if (empty($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>

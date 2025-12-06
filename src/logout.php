@@ -1,4 +1,6 @@
-<?php require("start.php"); ?>
+<?php require("start.php"); 
+session_unset();
+?>
 <!DOCTYPE html>
 
 <html>

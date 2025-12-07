@@ -1,4 +1,16 @@
-<?php require("start.php"); ?>
+<?php
+  require("start.php");
+  if(empty($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+  }
+  if(empty($_GET['user'])) {
+    header("Location: friends.php");
+    exit;
+  }
+  $user = $service->loadUser($_GET['user']);
+  //var_dump($user);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,9 +20,9 @@
     <link rel="stylesheet" href="stylesheet.css" />
   </head>
 
-  <body>
-    <h1>Profile of Tom</h1>
-    <a class="nav" href="./chat.php">&lt; Back to Chat</a> |
+  <body class="inOut">
+    <h1>Profile of <?= $user->getUsername() ?></h1>
+    <a class="nav" href="./chat.php?friend=<?= $user->getUsername() ?>">&lt; Back to Chat</a> |
     <a class="rmFriend" href="./friends.php">Remove Friend</a>
     <div class="profile-content mediaBreak">
       <img
@@ -20,31 +32,21 @@
         alt="Profile Picture"
       />
       <div class="profile-infos">
-        <p>
-          The Black Mesa Research Facility (also simply called Black Mesa) is a
-          fictional underground laboratory complex that serves as the primary
-          setting for the video game Half-Life and its expansions, as well as
-          its unofficial remake, Black Mesa. It also features in the wider
-          Half-Life universe, including the Portal series. Located in the New
-          Mexico desert in a decommissioned Cold War missile site, it is the
-          former employer of Half-Life's theoretical physicist protagonist,
-          Gordon Freeman, and a competitor of Aperture Science. While the
-          facility ostensibly conducts military-industrial research, its secret
-          experiments into teleportation have caused it to make contact with the
-          alien world of Xen, and its scientists covertly study its life-forms
-          and materials. In a catastrophic event known as the "Black Mesa
-          Incident", an "anti-mass spectrometer" experiment conducted on Xen
-          matter causes a Resonance Cascade disaster that allows aliens to
-          invade Earth, and is the catalyst for the events of the series.
-        </p>
+        <p><?= $user->getAboutYou() ?></p>
 
         <dl>
           <dt>Coffee or Tea?</dt>
           <dd>Tea</dd>
           <dt>Full Name</dt>
-          <dd>Tom LastName</dd>
+          <dd><?= $user->getUsername() . " " . $user->getLastname() ?></dd>
         </dl>
       </div>
     </div>
+    <h2>Change History</h2>
+      <?php
+        foreach ($user->getHistory() as $entry) {
+          echo $entry . "<br>";
+        }
+      ?>
   </body>
 </html>

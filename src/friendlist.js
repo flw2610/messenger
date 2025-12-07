@@ -203,8 +203,11 @@ function createRequestEntry(name) {
 
   const acceptButton = document.createElement("button");
   acceptButton.innerText = "Accept";
+  acceptButton.setAttribute("action", "accept-friend");
   const rejectButton = document.createElement("button");
   rejectButton.innerText = "Reject";
+  rejectButton.setAttribute("action", "reject-friend");
+
 
   innerDiv.appendChild(acceptButton);
   innerDiv.appendChild(rejectButton);

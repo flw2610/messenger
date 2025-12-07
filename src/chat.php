@@ -1,4 +1,8 @@
-<?php require("start.php"); ?>
+<?php require("start.php"); 
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

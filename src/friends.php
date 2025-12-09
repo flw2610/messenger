@@ -48,7 +48,7 @@ if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
 if (isset($_GET['action']) && ($_GET['action'] === 'add-friend')) {
   $friendToAdd = $_GET['user'];
   var_dump($friendToAdd);
-  if ($service->friendRequest($friendToAdd)) {
+  if ($service->friendRequest(['username' => $friendToAdd])) {
     error_log("Friend request sent to " . $friendToAdd . ".");
   } else {
     error_log("Failed to send friend request to " . $friendToAdd . ".");

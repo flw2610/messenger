@@ -26,11 +26,9 @@ function loadFriends() {
       } else {
         console.log("No friends loaded.");
       }
-    }
-    );
+    });
   //updateSelector();
   updateFriends();
-
 }
 
 function loadUsers() {
@@ -39,12 +37,10 @@ function loadUsers() {
     .then((data) => {
       if (data !== null) {
         users = data;
-
       } else {
         console.log("No users loaded.");
       }
-    }
-    );
+    });
 }
 
 function updateSelector() {
@@ -94,14 +90,16 @@ function addFriend() {
   }
 
   if (validUser) {
-    fetch("friends.php?action=add-friend&user=" + requestName)
-      .then((response) => {
+    fetch("friends.php?action=add-friend&user=" + requestName).then(
+      (response) => {
         if (response.ok) {
           console.log("Friend request sent.");
+          location.reload();
         } else {
           console.error("Error sending friend request.");
         }
-      });
+      }
+    );
   }
 
   requestField.value = "";
@@ -227,7 +225,6 @@ function createRequestEntry(name) {
   rejectButton.setAttribute("type", "button");
   rejectButton.setAttribute("onclick", "friendRequestReject(`" + name + "`)");
 
-
   innerDiv.appendChild(acceptButton);
   innerDiv.appendChild(rejectButton);
   outerDiv.innerText = "Friend request from ";
@@ -241,27 +238,23 @@ function createRequestEntry(name) {
 function friendRequestAccept(name) {
   // To be implemented
   console.log("Accepting friend request... accept " + name);
-  fetch("friends.php?action=accept-friend&user=" + name)
-    .then((response) => {
-      if (response.ok) {
-        console.log("Friend request accepted.");
-      } else {
-        console.error("Error accepting friend request.");
-      }
-    });
-
+  fetch("friends.php?action=accept-friend&user=" + name).then((response) => {
+    if (response.ok) {
+      console.log("Friend request accepted.");
+    } else {
+      console.error("Error accepting friend request.");
+    }
+  });
 }
 
 function friendRequestReject(name) {
   // To be implemented
   console.log("Rejecting friend request... reject " + name);
-  fetch("friends.php?action=reject-friend&user=" + name)
-    .then((response) => {
-      if (response.ok) {
-        console.log("Friend request rejected.");
-      } else {
-        console.error("Error rejecting friend request.");
-      }
-    });
-
+  fetch("friends.php?action=reject-friend&user=" + name).then((response) => {
+    if (response.ok) {
+      console.log("Friend request rejected.");
+    } else {
+      console.error("Error rejecting friend request.");
+    }
+  });
 }

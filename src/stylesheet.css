@@ -32,8 +32,8 @@ img {
 
 #profilpic {
   border-radius: 0%;
+  width: 50%;
   height: fit-content;
-  width: 40vw;
 }
 
 button {

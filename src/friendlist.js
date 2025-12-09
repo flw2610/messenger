@@ -189,6 +189,8 @@ function createFriendEntry(name) {
 
 function createRequestEntry(name) {
   // Construct new incoming friend request
+  const requestForm = document.createElement("form");
+  requestForm.id = "requestForm-" + name;
   const entry = document.createElement("li");
   entry.className = "requestEntry";
   entry.id = "requestEntry-" + name;
@@ -204,9 +206,13 @@ function createRequestEntry(name) {
   const acceptButton = document.createElement("button");
   acceptButton.innerText = "Accept";
   acceptButton.setAttribute("action", "accept-friend");
+  acceptButton.setAttribute("type", "submit");
+  acceptButton.setAttribute("onclick", "friendRequestAccept(`" + name + "`)");
   const rejectButton = document.createElement("button");
   rejectButton.innerText = "Reject";
   rejectButton.setAttribute("action", "reject-friend");
+  rejectButton.setAttribute("type", "submit");
+  rejectButton.setAttribute("onclick", "friendRequestReject(`" + name + "`)");
 
 
   innerDiv.appendChild(acceptButton);
@@ -215,5 +221,16 @@ function createRequestEntry(name) {
   outerDiv.appendChild(bold);
   outerDiv.appendChild(innerDiv);
   entry.appendChild(outerDiv);
-  return entry;
+  requestForm.appendChild(entry);
+  return requestForm;
+}
+
+function friendRequestAccept(name) {
+  // To be implemented
+  console.log("Accepting friend request... accept " + name);
+}
+
+function friendRequestReject(name) {
+  // To be implemented
+  console.log("Rejecting friend request... reject " + name);
 }

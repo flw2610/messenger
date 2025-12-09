@@ -64,8 +64,14 @@ function send_messages(data) { // obsolete because of php
     xmlhttp.send(jsonString); // Send JSON-data to server
 }
 
+function removeFriendHelper() {
+    link = document.getElementById("friend-remove");
+    link.href = "friends.php?remove=" + chatpartner;
+}
+
 let chatHeader = document.getElementById("chat-header");
 chatHeader.innerText = "Chat with " + chatpartner;
 //Jede Sekunde neu laden, um eventuelle Aktualisierungen zu visualisieren.
+removeFriendHelper();
 listMessages();
 setInterval(listMessages, 1000);

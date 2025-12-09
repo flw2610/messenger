@@ -18,7 +18,7 @@
     <h1 id="chat-header">Chat with Tom</h1>
     <a class="nav" href="friends.php">&lt; Back</a> |
     <a class="nav" href="profile.php">Profile</a> |
-    <a class="rmFriend" href="friends.php">Remove Friend</a>
+    <a class="rmFriend" id="friend-remove" href="friends.php">Remove Friend</a>
     <hr />
     <div id="messages"></div>
     <hr />

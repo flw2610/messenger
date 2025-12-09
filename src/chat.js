@@ -69,9 +69,15 @@ function removeFriendHelper() {
     link.href = "friends.php?remove=" + chatpartner;
 }
 
+function viewProfileHelper() {
+    link = document.getElementById("view-profile-link");
+    link.href = "profile.php?user=" + chatpartner;
+}
+
 let chatHeader = document.getElementById("chat-header");
 chatHeader.innerText = "Chat with " + chatpartner;
 //Jede Sekunde neu laden, um eventuelle Aktualisierungen zu visualisieren.
 removeFriendHelper();
+viewProfileHelper();
 listMessages();
 setInterval(listMessages, 1000);

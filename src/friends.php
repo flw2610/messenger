@@ -4,6 +4,8 @@ if (empty($_SESSION['user'])) {
   exit;
 }
 
+
+
 // Check Query Parameter to remove friend
 if (isset($_GET['remove'])) {
   $friendToRemove = $_GET['remove'];
@@ -17,25 +19,31 @@ if (isset($_GET['remove'])) {
   exit;
 }
 
-// Request frieds with a form submission with action parameter accept-friend or reject-friend
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (isset($_POST['action'])) {
-    $action = $_POST['action'];
-
-    switch ($action) {
-      case 'accept-friend':
-        // Accept friend request
-        error_log("Accept friend request not yet implemented.");
-        sleep(2);
-        break;
-      case 'reject-friend':
-        // Reject friend request
-        error_log("Reject friend request not yet implemented.");
-        sleep(2);
-        break;
-    }
+// Request in action accept-friend or reject-friend
+if (isset($_GET['action']) && ($_GET['action'] === 'accept-friend')) {
+  $message = 'baum';
+  $friendToAccept = $_GET['user'];
+  if($service->friendAccept($friendToAccept)) {
+    error_log("Friend request from " . $friendToAccept . " accepted.");
+  } else {
+    error_log("Failed to accept friend request from " . $friendToAccept . ".");
   }
+  header("Location: friends.php");
+  exit;
 }
+
+if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
+  $message = 'baum';
+  $friendToReject = $_GET['user'];
+  if($service->friendDismiss($friendToReject)) {
+    error_log("Friend request from " . $friendToReject . " rejected.");
+  } else {
+    error_log("Failed to reject friend request from " . $friendToReject . ".");
+  }
+  header("Location: friends.php");
+  exit;
+}
+
 
 ?>
 <!DOCTYPE html>

@@ -3,7 +3,7 @@ if (empty($_SESSION['user'])) {
   header("Location: login.php");
   exit;
 }
-
+var_dump($_SESSION['user']);
 
 
 // Check Query Parameter to remove friend
@@ -23,7 +23,7 @@ if (isset($_GET['remove'])) {
 if (isset($_GET['action']) && ($_GET['action'] === 'accept-friend')) {
   $message = 'baum';
   $friendToAccept = $_GET['user'];
-  if($service->friendAccept($friendToAccept)) {
+  if ($service->friendAccept($friendToAccept)) {
     error_log("Friend request from " . $friendToAccept . " accepted.");
   } else {
     error_log("Failed to accept friend request from " . $friendToAccept . ".");
@@ -35,10 +35,23 @@ if (isset($_GET['action']) && ($_GET['action'] === 'accept-friend')) {
 if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
   $message = 'baum';
   $friendToReject = $_GET['user'];
-  if($service->friendDismiss($friendToReject)) {
+  if ($service->friendDismiss($friendToReject)) {
     error_log("Friend request from " . $friendToReject . " rejected.");
   } else {
     error_log("Failed to reject friend request from " . $friendToReject . ".");
+  }
+  header("Location: friends.php");
+  exit;
+}
+
+// Friend add 
+if (isset($_GET['action']) && ($_GET['action'] === 'add-friend')) {
+  $friendToAdd = $_GET['user'];
+  var_dump($friendToAdd);
+  if ($service->friendRequest($friendToAdd)) {
+    error_log("Friend request sent to " . $friendToAdd . ".");
+  } else {
+    error_log("Failed to send friend request to " . $friendToAdd . ".");
   }
   header("Location: friends.php");
   exit;
@@ -49,18 +62,19 @@ $allUsers = $service->loadUsers();
 $allFriends = $service->loadFriends();
 $allFriendNames = [];
 foreach ($allFriends as $friend) {
-$allFriendNames[] = $friend->getUsername();
+  $allFriendNames[] = $friend->getUsername();
 }
 if ($allUsers) {
-    foreach ($allUsers as $user) {
-        if ($user->username !== $_SESSION['user']) {
-          if(!in_array($user, $allFriendNames)) {
-            $usernames[] = $user;
-          }
-        }
+  foreach ($allUsers as $user) {
+    if ($user !== $_SESSION['user']) {
+
+      if (!in_array($user, $allFriendNames)) {
+        $usernames[] = $user;
+      }
     }
+  }
 } else {
-    error_log("Failed to load users for datalist.");
+  error_log("Failed to load users for datalist.");
 }
 
 ?>
@@ -78,7 +92,7 @@ if ($allUsers) {
   <p>
     <a class="nav" href="./logout.php">Logout</a> |
     <a class="nav" href="./settings.php">Settings</a>
-    <?php echo '<input type="hidden" id="current-username" value="'.$_SESSION['user'].'"/>'; ?>
+    <?php echo '<input type="hidden" id="current-username" value="' . $_SESSION['user'] . '"/>'; ?>
   </p>
   <hr />
   <!--Friends-->
@@ -96,11 +110,11 @@ if ($allUsers) {
       <datalist id="friend-selector">
         <?php
         foreach ($usernames as $username) {
-            echo '<option value="' . htmlspecialchars($username) . '"></option>';
+          echo '<option value="' . htmlspecialchars($username) . '"></option>';
         }
         ?>
       </datalist>
-      <button type="button" onclick="addFriend()">Add</button>
+      <button type="button" action="addfriend" onclick="addFriend()">Add</button>
     </div>
   </form>
 </body>

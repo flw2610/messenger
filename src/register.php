@@ -54,11 +54,11 @@
         </div>
         <div class="mediaBreak">
           <label for="password">Password</label>
-          <input type="text" id="password" name="password" placeholder="Password" />
+          <input type="password" id="password" name="password" placeholder="Password" />
         </div>
         <div class="mediaBreak">
           <label for="password_repetition">Confirm Password</label>
-          <input type="text" id="password_repetition" name="password_repetition" placeholder="Confirm Password" />
+          <input type="password" id="password_repetition" name="password_repetition" placeholder="Confirm Password" />
         </div>
       </fieldset>
       <div class="mediaBreak">

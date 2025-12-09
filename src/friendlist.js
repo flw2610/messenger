@@ -12,9 +12,20 @@ loadUsers();
 
 function loadFriends() {
   fetch("ajax_load_friends.php")
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 404) {
+        friends = [];
+        return null;
+      } else {
+        return res.json();
+      }
+    })
     .then((data) => {
-      friends = data;
+      if (data !== null) {
+        friends = data;
+      } else {
+        console.log("No friends loaded.");
+      }
     }
     );
   //updateSelector();
@@ -26,7 +37,7 @@ function loadUsers() {
   fetch("ajax_load_users.php")
     .then((res) => res.json())
     .then((data) => {
-      if(data !== null){
+      if (data !== null) {
         users = data;
 
       } else {
@@ -83,22 +94,14 @@ function addFriend() {
   }
 
   if (validUser) {
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
-        console.log("Requested...");
-        alert("Friend request sent!");
-        requestField.style.borderColor = "";
-      }
-    };
-    xmlhttp.open("POST", backendUrl + "/friend", true);
-    xmlhttp.setRequestHeader("Content-type", "application/json");
-    xmlhttp.setRequestHeader("Authorization", "Bearer " + token);
-    let data = {
-      username: requestName,
-    };
-    let jsonString = JSON.stringify(data);
-    xmlhttp.send(jsonString);
+    fetch("friends.php?action=add-friend&user=" + requestName)
+      .then((response) => {
+        if (response.ok) {
+          console.log("Friend request sent.");
+        } else {
+          console.error("Error sending friend request.");
+        }
+      });
   }
 
   requestField.value = "";

@@ -23,7 +23,7 @@
   <body class="inOut">
     <h1>Profile of <?= $user->getUsername() ?></h1>
     <a class="nav" href="./chat.php?friend=<?= $user->getUsername() ?>">&lt; Back to Chat</a> |
-    <a class="rmFriend" href="./friends.php">Remove Friend</a>
+    <a class="rmFriend" href="./friends.php?remove=<?= $user->getUsername() ?>">Remove Friend</a>
     <div class="profile-content mediaBreak">
       <img
         id="profilpic"

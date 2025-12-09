@@ -21,6 +21,16 @@ class Friend implements JsonSerializable
         return $this->status;
     }
 
+    public function setStatusAccepted()
+    {
+        $this->status = "accepted";
+    }
+
+    public function setStatusDismissed()
+    {
+        $this->status = "dismissed";
+    }
+
     public function jsonSerialize(): mixed
     {
         return get_object_vars($this);

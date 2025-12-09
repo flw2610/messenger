@@ -1,5 +1,7 @@
 var users = [];
 var friends = [];
+const currentUser = document.getElementById("current-username").value;
+console.log("Current user is: " + currentUser);
 
 window.setInterval(function () {
   loadFriends();
@@ -15,22 +17,23 @@ function loadFriends() {
       friends = data;
     }
     );
-  updateSelector();
+  //updateSelector();
   updateFriends();
 
 }
 
 function loadUsers() {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      users = JSON.parse(xmlhttp.responseText);
-      //console.log(users);
+  fetch("ajax_load_users.php")
+    .then((res) => res.json())
+    .then((data) => {
+      if(data !== null){
+        users = data;
+
+      } else {
+        console.log("No users loaded.");
+      }
     }
-  };
-  xmlhttp.open("GET", backendUrl + "/user", true);
-  xmlhttp.setRequestHeader("Authorization", "Bearer " + token);
-  xmlhttp.send();
+    );
 }
 
 function updateSelector() {
@@ -227,9 +230,9 @@ function createRequestEntry(name) {
   outerDiv.innerText = "Friend request from ";
   outerDiv.appendChild(bold);
   outerDiv.appendChild(innerDiv);
-  entry.appendChild(outerDiv);
-  requestForm.appendChild(entry);
-  return requestForm;
+  requestForm.appendChild(outerDiv);
+  entry.appendChild(requestForm);
+  return entry;
 }
 
 function friendRequestAccept(name) {

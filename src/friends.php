@@ -44,6 +44,24 @@ if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
   exit;
 }
 
+// create datalist of all users for friend request input field
+$allUsers = $service->loadUsers();
+$allFriends = $service->loadFriends();
+$allFriendNames = [];
+foreach ($allFriends as $friend) {
+$allFriendNames[] = $friend->getUsername();
+}
+if ($allUsers) {
+    foreach ($allUsers as $user) {
+        if ($user->username !== $_SESSION['user']) {
+          if(!in_array($user, $allFriendNames)) {
+            $usernames[] = $user;
+          }
+        }
+    }
+} else {
+    error_log("Failed to load users for datalist.");
+}
 
 ?>
 <!DOCTYPE html>
@@ -60,6 +78,7 @@ if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
   <p>
     <a class="nav" href="./logout.php">Logout</a> |
     <a class="nav" href="./settings.php">Settings</a>
+    <?php echo '<input type="hidden" id="current-username" value="'.$_SESSION['user'].'"/>'; ?>
   </p>
   <hr />
   <!--Friends-->
@@ -74,7 +93,13 @@ if (isset($_GET['action']) && ($_GET['action'] === 'reject-friend')) {
     <div class="inline-input-button mediaBreak">
       <input class="friend-message-input" type="text" placeholder="Add Friend to List" name="friendRequestName"
         id="friend-request-name" list="friend-selector" autocomplete="off" />
-      <datalist id="friend-selector"> </datalist>
+      <datalist id="friend-selector">
+        <?php
+        foreach ($usernames as $username) {
+            echo '<option value="' . htmlspecialchars($username) . '"></option>';
+        }
+        ?>
+      </datalist>
       <button type="button" onclick="addFriend()">Add</button>
     </div>
   </form>

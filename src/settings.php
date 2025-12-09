@@ -12,12 +12,12 @@
   //var_dump($user);
 
   if(isset($_POST["save"])){
-    if(empty($_POST["firstName"])){
-      echo "<p>The First Name can't be empty!</p>";
-      exit;
-    }
+    //if(empty($_POST["firstName"])){
+    //  echo "<p>The First Name can't be empty!</p>";
+    //  exit;
+    //}
 
-    $user->setUsername($_POST["firstName"]);
+    //$user->setUsername($_POST["firstName"]);
     $user->setLastname($_POST["lastName"]);
     $user->setCoffeeOrTea($_POST["coffeeOrTea"]);
     $user->setAboutYou($_POST["aboutYou"]);
@@ -54,6 +54,7 @@
             type="text"
             id="firstName"
             name="firstName"
+            disabled
             value="<?= $user->getUsername() ?>"
             placeholder="Your name"
           />

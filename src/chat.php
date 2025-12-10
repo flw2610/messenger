@@ -1,0 +1,44 @@
+<?php require("start.php"); 
+
+if (empty($_SESSION['user'])) {
+  header("Location: login.php");
+  exit;
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="main.js"></script>
+    <script src="chat.js" defer></script>
+  </head>
+
+  <body>
+    <h1 id="chat-header">Chat with Tom</h1>
+    <a class="nav" href="friends.php">&lt; Back</a> |
+    <a class="nav" id="view-profile-link" href="profile.php">Profile</a> |
+    <a class="rmFriend" id="friend-remove" href="friends.php">Remove Friend</a>
+    <hr />
+    <div id="messages"></div>
+    <hr />
+    <div class="inline-input-button mediaBreak">
+      <input
+        id="message-input"
+        class="friend-message-input"
+        type="text"
+        placeholder="New Message"
+      />
+      <button
+        id="send-message-button"
+        type="button"
+        onclick="onSendMessageButtonClicked()"
+      >
+        Send
+      </button>
+    </div>
+  </body>
+</html>

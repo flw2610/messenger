@@ -1,0 +1,3 @@
+logs/nginx
+logs/nginx/php_access.log
+logs/nginx/php_error.log

@@ -25,10 +25,12 @@ function validateUsername() {
 function changeBorderColorUsername(nameTaken) {
     let inputField = document.getElementById('username');
     if (nameTaken) {
-        inputField.style.borderColor = 'red';
+        inputField.classList.remove('is-valid');
+        inputField.classList.add('is-invalid');
         usernameOk = false;
     } else {
-        inputField.style.borderColor = 'green';
+        inputField.classList.remove('is-invalid');
+        inputField.classList.add('is-valid');
         usernameOk = true;
     }
 }

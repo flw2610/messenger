@@ -38,7 +38,7 @@ if (!empty($_POST["action"]) && $_POST["action"] === "register") {
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <!-- <link rel="stylesheet" href="stylesheet.css" /> -->
+  
   <script src="main.js"></script>
   <script src="register.js" defer></script>
 </head>
@@ -48,30 +48,30 @@ if (!empty($_POST["action"]) && $_POST["action"] === "register") {
     <img class="rounded mx-auto d-block" src="images/user.png" alt="profile" />
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <div class="card mt-3">
+        <div class="card mt-3 shadow">
           <div class="card-header">
             <h1>Register yourself</h1>
           </div>
           <div class="card-body">
-            <form method="post">
+            <form id="registerform" method="post" novalidate>
               <div class="form-group">
 
                 <div class="mb-3">
-                  <input class="form-control" type="text" id="username" name="username" placeholder="Username" />
+                  <input class="form-control" type="text" id="username" name="username" placeholder="Username" required/>
                   <div class="invalid-feedback">Username schon vorhanden</div>
                 </div>
 
                 <div class="mb-3">
-                  <input class="form-control" type="password" id="password" name="password" placeholder="Password" />
+                  <input class="form-control" type="password" id="password" name="password" placeholder="Password" required/>
                   <div class="invalid-feedback">Passwort ist zu kurz</div>
                 </div>
 
                 <div class="mb-3">
-                  <input class="form-control" type="password" id="password_repetition" name="password_repetition" placeholder="Confirm Password" />
+                  <input class="form-control" type="password" id="password_repetition" name="password_repetition" placeholder="Confirm Password" required/>
                   <div class="invalid-feedback">Passwörter stimmen nicht überein</div>
                 </div>
 
-                <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex btn-group mt-3">
                   <a href="login.php">
                     <button class="btn btn-secondary" type="button">Cancel</button>
                   </a>

@@ -3,7 +3,7 @@ if (empty($_SESSION['user'])) {
   header("Location: login.php");
   exit;
 }
-var_dump($_SESSION['user']);
+//var_dump($_SESSION['user']);
 
 
 // Check Query Parameter to remove friend

@@ -24,6 +24,25 @@ $user = $service->loadUser($_GET['user']);
 </head>
 
 <body class="inOut">
+  <div class="modal" id="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Remove <?= $user->getUsername() ?> as a Friend?</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <p>Do you really want to end your friendship?</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+          <button type="button" class="btn btn-primary" onclick='removeFriend("<?= $user->getUsername() ?>")'>Yes, Please!</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <h1>Profile of <?= $user->getUsername() ?></h1>
@@ -31,7 +50,7 @@ $user = $service->loadUser($_GET['user']);
     <div class="row mx-auto mb-3">
       <div class="btn-group col-4">
         <a class="nav btn btn-secondary" href="./chat.php?friend=<?= $user->getUsername() ?>"> &lt; Back to Chat</a>
-        <a class="rmFriend btn btn-danger" href="./friends.php?remove=<?= $user->getUsername() ?>">Remove Friend</a>
+        <button id="profile-remove-btn" class="rmFriend btn btn-danger" data-bs-toggle='modal' data-bs-target='#dialog'>Remove Friend</button>
       </div>
     </div>
     <div class="row profile-content mediaBreak">
@@ -66,6 +85,17 @@ $user = $service->loadUser($_GET['user']);
 
   </div>
   </div>
+  <script>
+    // create a model for remove friend 
+
+    function removeFriend(name) {
+      const btn = document.getElementById("profile-remove-btn");
+      let myModalEl = document.querySelector('#dialog')
+      let modal = bootstrap.Modal.getOrCreateInstance(myModalEl);
+      modal.hide();
+      window.location.href = "friends.php?remove=" + name;
+    }
+  </script>
 </body>
 
 </html>

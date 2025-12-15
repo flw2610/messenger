@@ -62,6 +62,7 @@
             id="firstName"
             name="firstName"
             class="form-control"
+            style="height: 58px"
             disabled
             value="<?= $user->getUsername() ?>"
             placeholder="Your name"
@@ -74,6 +75,7 @@
             id="lastName"
             name="lastName"
             class="form-control"
+            style="height: 58px"
             value="<?= $user->getLastname() ?>"
             placeholder="Your surname"
           />
@@ -145,14 +147,18 @@
           }
         ?>
       </form>
-    </div>
-    <div class="container bg-secondary py-3 px-5">
+    
+      <hr>
+    
       <h2 >Change History</h2>
+      <ul class="list-group">
       <?php
         foreach ($user->getHistory() as $entry) {
-          echo $entry . "<br>";
+          echo '<li class="list-group-item">' . $entry . '</li>';
         }
       ?>
+      </ul>
+
     </div>
 
     <!-- Bootstrap Bundle inkl. Popper -->

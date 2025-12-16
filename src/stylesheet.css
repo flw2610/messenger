@@ -120,7 +120,13 @@ a {
   text-decoration: none;
 }
 
-
+.zero {
+  background: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 a:hover {
   font-weight: bold;

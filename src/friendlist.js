@@ -194,9 +194,9 @@ function createFriendEntry(name) {
 function createRequestEntry(name) {
   // Construct new incoming friend request
   //requestForm.action = "friends.php?baum=true";
-  const requestForm = document.createElement("form");
-  requestForm.id = "requestForm-" + name;
-  requestForm.method = "POST";
+  //const requestForm = document.createElement("form");
+  //requestForm.id = "requestForm-" + name;
+  //requestForm.method = "POST";
   const entry = document.createElement("li");
   entry.className = "requestEntry";
   entry.id = "requestEntry-" + name;
@@ -204,36 +204,95 @@ function createRequestEntry(name) {
   const outerDiv = document.createElement("div");
   outerDiv.className = "mediaBreak";
 
-  const bold = document.createElement("b");
+  const bold = document.createElement("button");
   bold.innerText = name;
+  bold.className = "zero";
+  bold.type = "button";
+  bold.setAttribute("onclick", "openModal(`" + name + "`)");
 
-  const innerDiv = document.createElement("div");
 
   const acceptButton = document.createElement("button");
   acceptButton.innerText = "Accept";
   acceptButton.type = "button";
   acceptButton.name = "action";
   acceptButton.value = "accept-friend";
-  //acceptButton.setAttribute("value", "accept-friend");
-  //acceptButton.setAttribute("action", "friends.php?action=accept-friend&user=" + name);
-  //acceptButton.setAttribute("type", "submit");
   acceptButton.setAttribute("onclick", "friendRequestAccept(`" + name + "`)");
+  acceptButton.className = "btn btn-success";
+  //data-bs-dismiss="modal"
+  acceptButton.setAttribute("data-bs-dismiss", "modal");
+
+
   const rejectButton = document.createElement("button");
   rejectButton.innerText = "Reject";
-  //rejectButton.setAttribute("value", "reject-friend");
-  //rejectButton.setAttribute("action", "friends.php?action=reject-friend&user=" + name);
   rejectButton.setAttribute("type", "button");
   rejectButton.setAttribute("onclick", "friendRequestReject(`" + name + "`)");
+  rejectButton.className = "btn btn-danger";
+  rejectButton.setAttribute("data-bs-dismiss", "modal");
 
-  innerDiv.appendChild(acceptButton);
-  innerDiv.appendChild(rejectButton);
+  //innerDiv.appendChild(acceptButton);
+  //innerDiv.appendChild(rejectButton);
   outerDiv.innerText = "Friend request from ";
   outerDiv.appendChild(bold);
-  outerDiv.appendChild(innerDiv);
-  requestForm.appendChild(outerDiv);
-  entry.appendChild(requestForm);
+  //requestForm.appendChild(outerDiv);
+  entry.appendChild(outerDiv);
+  document.body.appendChild(createModal(name, rejectButton, acceptButton));
   return entry;
 }
+
+function createModal(name, acceptButton, rejectButton) {
+  var modal = document.createElement("div");
+  modal.className = "modal";
+  modal.id = "myModal" + name;
+  modal.tabIndex = -1;
+
+  var modalDialog = document.createElement("div");
+  modalDialog.className = "modal-dialog";
+
+  var modalContent = document.createElement("div");
+  modalContent.className = "modal-content";
+
+  var modalHeader = document.createElement("div");
+  modalHeader.className = "modal-header";
+
+  var modalTitle = document.createElement("h5");
+  modalTitle.className = "modal-title";
+  modalTitle.innerText = "Friend Request from " + name;
+  var closeButton = document.createElement("button");
+  closeButton.type = "button";
+  closeButton.className = "btn-close";
+  closeButton.setAttribute("data-bs-dismiss", "modal");
+  closeButton.setAttribute("aria-label", "Close");
+
+  var modalBody = document.createElement("div");
+  modalBody.className = "modal-body";
+  var bodyText = document.createElement("p");
+  bodyText.innerText = "Accept request?";
+  
+  var modalFooter = document.createElement("div");
+  modalFooter.className = "modal-footer";
+
+  modalFooter.appendChild(acceptButton);
+  modalFooter.appendChild(rejectButton);
+
+  modalContent.appendChild(modalHeader);
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(closeButton);
+
+  modalContent.appendChild(modalBody);
+  modalBody.appendChild(bodyText);
+
+  modalContent.appendChild(modalFooter);
+
+  modalDialog.appendChild(modalContent);
+  modal.appendChild(modalDialog);
+  return modal;
+
+}
+
+function openModal(name) {
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'+name));
+    myModal.show();
+    }
 
 function friendRequestAccept(name) {
   // To be implemented

@@ -43,47 +43,85 @@ $user = $service->loadUser($_GET['user']);
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <h1>Profile of <?= $user->getUsername() ?></h1>
-    </div>
-    <div class="row mx-auto mb-3">
-      <div class="btn-group col-4">
-        <a class="nav btn btn-secondary" href="./chat.php?friend=<?= $user->getUsername() ?>"> &lt; Back to Chat</a>
-        <button id="profile-remove-btn" class="rmFriend btn btn-danger" data-bs-toggle='modal' data-bs-target='#dialog'>Remove Friend</button>
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h1 class="text-center">
+          Profile of <?= $user->getUsername() ?>
+        </h1>
       </div>
     </div>
-    <div class="row profile-content mediaBreak">
-      <div class="col-3">
-        <img
-          class="rounded mx-auto d-block mb-3"
-          id="profilpic"
-          src="images/profile.png"
-          width="250"
-          alt="Profile Picture" />
 
-      </div>
-      <div class="profile-infos col-9">
-        <p><?= $user->getAboutYou() ?></p>
+    <div class="row justify-content-center mb-4">
+      <div class="col-auto">
+        <div class="btn-group">
+          <a class="btn btn-secondary btn-sm"
+            href="./chat.php?friend=<?= $user->getUsername() ?>">
+            &lt; Back to Chat
+          </a>
 
-        <dl>
-          <dt>Coffee or Tea?</dt>
-          <dd>Tea</dd>
-          <dt>Full Name</dt>
-          <dd><?= $user->getUsername() . " " . $user->getLastname() ?></dd>
-        </dl>
+          <button
+            id="profile-remove-btn"
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#dialog">
+            Remove Friend
+          </button>
+        </div>
       </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="card shadow-sm p-4">
+          <div class="row align-items-start">
+
+            <!-- Profilbild -->
+            <div class="col-md-3 text-center">
+              <img
+                src="images/profile.png"
+                class="img-fluid rounded mb-3"
+                alt="Profile Picture"
+                style="max-width: 200px;" />
+            </div>
+
+            <!-- Profilinfos -->
+            <div class="col-md-9">
+              <p>
+                <?= $user->getAboutYou() ?>
+              </p>
+
+              <dl class="row">
+                <dt class="col-sm-4">Coffee or Tea?</dt>
+                <dd class="col-sm-8">Tea</dd>
+
+                <dt class="col-sm-4">Full Name</dt>
+                <dd class="col-sm-8">
+                  <?= $user->getUsername() . " " . $user->getLastname() ?>
+                </dd>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-10 text-center">
+      <h2>Change History</h2>
+
+      <?php
+      foreach ($user->getHistory() as $entry) {
+        echo "<p>$entry</p>";
+      }
+      ?>
     </div>
   </div>
-  <div class="row">
-    <h2>Change History</h2>
-    <?php
-    foreach ($user->getHistory() as $entry) {
-      echo $entry . "<br>";
-    }
-    ?>
 
-  </div>
   </div>
   <script>
     // create a model for remove friend 

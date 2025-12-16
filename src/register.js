@@ -45,11 +45,13 @@ function canRegister() {
 
 // Validate username length
 document.getElementById('username').addEventListener('input', function () {
-    document.getElementById('formregister').classList.remove('was-validated');
+    document.getElementById('registerform').classList.remove('was-validated');
     if (this.value.length < 3) {
         console.log('Username must be at least 3 characters long.');
         //this.style.borderColor = 'red';
-        passwordOk = false;
+        usernameOk = false;
+        this.classList.add('is-invalid');
+        this.classList.remove('is-valid');
     } else {
         validateUsername();
     }
@@ -102,6 +104,6 @@ form.addEventListener('submit', function (event) {
     } else {
         console.log('Form submitted successfully.');
     }
-    //form.classList.add('was-validated');
+    form.classList.add('was-validated');
 }, false);
 

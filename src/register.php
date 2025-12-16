@@ -45,7 +45,7 @@ if (!empty($_POST["action"]) && $_POST["action"] === "register") {
 
 <body class="inOut">
   <div class="container">
-    <img class="rounded mx-auto d-block" src="images/user.png" alt="profile" />
+    <img class="rounded-circle mx-auto d-block mt-3" src="images/user.png" alt="profile" style="width: 200px;"/>
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="card mt-3 shadow">

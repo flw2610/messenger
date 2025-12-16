@@ -175,7 +175,7 @@ function updateFriends() {
 function createFriendEntry(name) {
   // Construct new entry for the friendlist
   const entry = document.createElement("li");
-  entry.className = "friendEntry";
+  entry.className = "friendEntry list-group-item";
 
   const anchor = document.createElement("a");
   anchor.setAttribute("href", "chat.php?friend=" + name);

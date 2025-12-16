@@ -39,13 +39,6 @@ img {
   height: fit-content;
 }
 
-button {
-  background-color: gray;
-  color: white;
-  height: 30px;
-  width: 130px;
-  margin-inline: 10px;
-}
 
 .profile-content {
   display: flex;
@@ -126,6 +119,8 @@ hr {
 a {
   text-decoration: none;
 }
+
+
 
 a:hover {
   font-weight: bold;

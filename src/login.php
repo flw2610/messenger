@@ -5,7 +5,7 @@ if (isset($_SESSION['user'])) {
   exit;
 }
 
-if (!empty($_POST["action"])&& $_POST["action"] === "login") {
+if (!empty($_POST["action"]) && $_POST["action"] === "login") {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
@@ -26,31 +26,42 @@ if (!empty($_POST["action"])&& $_POST["action"] === "login") {
 
 <head>
   <link rel="stylesheet" href="stylesheet.css" />
+  <!-- CSS-Framework von Bootstrap -->
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    crossorigin='anonymous'>
+
 </head>
 
 <body class="inOut">
   <img src="images/chat.png" alt="SprechblasenLogo" />
-  <h1><b>Please sign in</b></h1>
-  <form class="login_register" method="post">
-    <fieldset class="frame">
-      <legend>Login</legend>
-      <div class="mediaBreak">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Username" /><br />
+  <div class="mb-5"></div>
+  <br />
+  <div class='container container-style'>
+    <form class="login_register p-5" method="post">
+
+      <h2>Please sign in</h2>
+      <div class='form-group mb-3'>
+        <input type="text" id="username" name="username" placeholder="Username"/><br />
       </div>
 
-      <div class="mediaBreak">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" />
+      <div class='form-group mb-3'>
+        <input  type="password" id="password" name="password" placeholder="Password" />
       </div>
-    </fieldset>
-    <div class="mediaBreak">
-      <a href="./register.php"><button type="button">Register</button></a>
 
-      <button class="enterButton" type="submit" name="action" value="login">Login</button>
+      <div class='form-group mb-3'>
+       <a href="./register.php"><button class="btn btn-secondary" type="button">Register</button></a> 
 
-    </div>
-  </form>
+        <button class="btn btn-primary block" type="submit" name="action" value="login">Login</button>
+
+      </div>
+
+
+    </form>
+  </div>
+  <!-- Notwendige JavaScript-Abhängigkeiten -->
+  <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js'
+    crossorigin='anonymous'></script>
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js' crossorigin='anonymous'></script>
 </body>
 
 </html>

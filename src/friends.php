@@ -85,18 +85,23 @@ if ($allUsers) {
   <link rel="stylesheet" href="stylesheet.css" />
   <script src="main.js"></script>
   <script src="friendlist.js" defer></script>
+
+  <!-- CSS-Framework von Bootstrap -->
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    crossorigin='anonymous'>
+
 </head>
 
-<body>
+<body style="background-color: #f8f9fa;">
   <h1><b>Friends</b></h1>
   <p>
-    <a class="nav" href="./logout.php">Logout</a> |
-    <a class="nav" href="./settings.php">Settings</a>
+    <a  href="./logout.php"><button class="btn btn-secondary">Logout</button></a> 
+    <a  href="./settings.php"><button class="btn btn-secondary">Edit Profile</button></a>
     <?php echo '<input type="hidden" id="current-username" value="' . $_SESSION['user'] . '"/>'; ?>
   </p>
   <hr />
   <!--Friends-->
-  <ul id="friendlist"></ul>
+  <ul id="friendlist" class="list-group"></ul>
   <hr />
   <!--Friend Requests-->
   <h2><b>New Requests</b></h2>
@@ -105,7 +110,9 @@ if ($allUsers) {
   <!--Adding new Friend-->
   <form>
     <div class="inline-input-button mediaBreak">
-      <input class="friend-message-input" type="text" placeholder="Add Friend to List" name="friendRequestName"
+
+      <div class="input-group mb-3">
+      <input class="friend-message-input form-control" type="text" placeholder="Add Friend to List" name="friendRequestName"
         id="friend-request-name" list="friend-selector" autocomplete="off" />
       <datalist id="friend-selector">
         <?php
@@ -114,9 +121,18 @@ if ($allUsers) {
         }
         ?>
       </datalist>
-      <button type="button" action="addfriend" onclick="addFriend()">Add</button>
+      <button class="btn btn-primary" type="button" action="addfriend" onclick="addFriend()">Add</button>
+
+</div>
+
+
     </div>
   </form>
+
+  <!-- Notwendige JavaScript-Abhängigkeiten -->
+  <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js'
+    crossorigin='anonymous'></script>
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js' crossorigin='anonymous'></script>
 </body>
 
 </html>
